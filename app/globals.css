@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+/*
+ * トークン体系: 「防災カルテ（診療記録）」というアプリ名そのものを意匠に。
+ * 用紙=薄いカルテ用紙色、朱=印鑑・警戒、緑=避難サイン安全色、黄土=紙タブ。
+ * 防災情報の視認性を優先し、OSのダークモードに関わらず紙面配色で固定する。
+ */
+@theme {
+  --color-paper: #eef0e6;
+  --color-paper-deep: #e2e4d2;
+  --color-paper-card: #f6f7ef;
+  --color-ink: #1e211d;
+  --color-ink-soft: #565a4f;
+  --color-hanko: #b23a2e;
+  --color-hanko-deep: #8f2c22;
+  --color-anzen: #0b6e4f;
+  --color-anzen-deep: #085138;
+  --color-tab: #c99a2e;
+  --color-tab-deep: #a97e1e;
+  --color-keikai: #e2a63b;
+
+  --font-display: "Zen Old Mincho", "Hiragino Mincho ProN", serif;
+  --font-body: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  --font-mono: "DotGothic16", "Hiragino Kaku Gothic ProN", monospace;
+}
+
+body {
+  background-color: var(--color-paper);
+  background-image: linear-gradient(var(--color-paper-deep) 1px, transparent 1px);
+  background-size: 100% 2.25rem;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+/* カルテ用紙: セクションを1枚の記録用紙として扱う */
+.chart-sheet {
+  position: relative;
+  background-color: var(--color-paper-card);
+  border: 1px solid var(--color-paper-deep);
+  box-shadow: 3px 3px 0 var(--color-paper-deep);
+}
+
+.chart-tab {
+  position: absolute;
+  top: -1.1rem;
+  left: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--color-paper-card);
+  background: var(--color-tab);
+  padding: 0.15rem 0.6rem;
+  clip-path: polygon(6% 0, 94% 0, 100% 100%, 0% 100%);
+}
+
+/* 印鑑（判子）: 押印の演出。選択状態の signature 要素 */
+.hanko {
+  position: relative;
+  border: 2.5px solid currentColor;
+  border-radius: 9999px;
+  transform: rotate(-5deg);
+}
+.hanko::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  border: 1px solid currentColor;
+  opacity: 0.35;
+}
+.hanko-stamped {
+  animation: stamp-down 180ms ease-out;
+}
+@keyframes stamp-down {
+  0% { transform: rotate(-5deg) scale(1.6); opacity: 0; }
+  60% { transform: rotate(-5deg) scale(0.95); opacity: 1; }
+  100% { transform: rotate(-5deg) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hanko-stamped { animation: none; }
+}

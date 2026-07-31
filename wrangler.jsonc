@@ -1,0 +1,28 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"main": ".open-next/worker.js",
+	"name": "mansion-bousai",
+	"compatibility_date": "2026-07-31",
+	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"services": [
+		{
+			// 自己参照サービスバインディング。名前はworker名と一致させる
+			// see https://opennext.js.org/cloudflare/caching
+			"binding": "WORKER_SELF_REFERENCE",
+			"service": "mansion-bousai"
+		}
+	],
+	"hyperdrive": [
+		{
+			// Neon(Postgres)へのTCP接続をHyperdrive経由でプールする
+			// idはCloudflareダッシュボードでHyperdrive設定を作成後に発行される（DEPLOY.md参照）
+			"binding": "HYPERDRIVE",
+			"id": "<HYPERDRIVE_ID>",
+			"localConnectionString": "postgres://bousai:bousai@localhost:5433/bousai"
+		}
+	]
+}

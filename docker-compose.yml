@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: mansion-bousai-db
+    environment:
+      POSTGRES_USER: bousai
+      POSTGRES_PASSWORD: bousai
+      POSTGRES_DB: bousai
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./db/init:/docker-entrypoint-initdb.d
+      - bousai-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bousai -d bousai"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  bousai-pgdata:
