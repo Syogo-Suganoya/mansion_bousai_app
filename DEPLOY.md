@@ -159,6 +159,11 @@ npm run cf:deploy
    GitHubの **Actions** タブでワークフローの実行結果を確認する。
    以降は `main` へのpushのたびに自動デプロイされる（Actionsタブから手動実行も可能）。
 
+   ワークフローには `environment: production` を設定してあるため、実行のたびに
+   GitHubの **Deployments（Environments）** に履歴と公開URLが記録される。
+   リポジトリトップに表示するには、リポジトリの **Edit repository details** →
+   *Include in the home page* の **Deployments** にチェックを入れる。
+
 > **Hyperdriveのバインディング**: `wrangler.jsonc` の `account_id` と `hyperdrive[0].id` は
 > コミット済みのため、CI側で環境変数を追加する必要はない。DBの認証情報はHyperdriveが
 > 保持しているので、リポジトリにもGitHub Secretsにも接続文字列を置かずに済む。

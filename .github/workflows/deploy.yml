@@ -13,6 +13,10 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # GitHubのDeployments(Environments)に実行履歴と公開URLが記録される
+    environment:
+      name: production
+      url: https://mansion-bousai.tokyo-odh-039.workers.dev/
     steps:
       - uses: actions/checkout@v4
 
