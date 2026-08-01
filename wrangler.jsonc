@@ -2,6 +2,8 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"main": ".open-next/worker.js",
 	"name": "mansion-bousai",
+	// デプロイ先アカウント(tokyo_odh_039)。複数アカウントに所属しているため明示する
+	"account_id": "a128e75b7210f99f780cccff2c2cf5ab",
 	"compatibility_date": "2026-07-31",
 	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
 	"assets": {
@@ -19,9 +21,9 @@
 	"hyperdrive": [
 		{
 			// Neon(Postgres)へのTCP接続をHyperdrive経由でプールする
-			// idはCloudflareダッシュボードでHyperdrive設定を作成後に発行される（DEPLOY.md参照）
+			// idは `wrangler hyperdrive create` で発行される（DEPLOY.md参照）
 			"binding": "HYPERDRIVE",
-			"id": "<HYPERDRIVE_ID>",
+			"id": "dd2ece46c207442ab3d703b51ddf592c",
 			"localConnectionString": "postgres://bousai:bousai@localhost:5433/bousai"
 		}
 	]
