@@ -33,6 +33,10 @@
 | DBへの接続（本番） | Cloudflare Hyperdrive |
 | ジオコーディング | 国土地理院API（APIキー不要） |
 
+### アーキテクチャ
+
+![システムアーキテクチャ](docs/architecture.png)
+
 ## 開発・デプロイ
 
 - ローカル開発環境のセットアップ・ハマりどころ: [`CONTRIBUTING.md`](CONTRIBUTING.md)
