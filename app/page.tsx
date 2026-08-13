@@ -30,9 +30,11 @@ const FEATURES = [
   },
 ];
 
-const STEPS = [
+// 画面ごとの機能紹介。順序に意味はなく、それぞれ独立して使える
+const GUIDES = [
   {
-    num: "STEP 1",
+    tag: "防災カルテ",
+    icon: "🚨",
     title: "発災時モードで状況をワンタップ共有",
     desc: "防災カルテの最上部にある3つのボタンで、いまの状況（在宅避難中（安全）/ 要救助 / 避難所へ移動開始）を選びます。選択は端末に保存され、次に開いたときも維持されます。",
     img: step1,
@@ -40,7 +42,8 @@ const STEPS = [
     href: "/karte",
   },
   {
-    num: "STEP 2",
+    tag: "防災カルテ",
+    icon: "🗺️",
     title: "住所を入力して地域危険度を判定",
     desc: "「墨田区京島2丁目」のように区名＋町丁目を入力して「判定」を押すと、危険度ランク（1〜5）・想定最大浸水深・周辺300m四方の消火栓/防火水槽数・近くの指定避難所が表示されます。緑のバッジは実データ（東京都オープンデータAPI）で判定されたことを示します。",
     img: step2,
@@ -48,7 +51,8 @@ const STEPS = [
     href: "/karte",
   },
   {
-    num: "STEP 3",
+    tag: "防災カルテ",
+    icon: "🏢",
     title: "マンション情報で在宅避難適性を診断",
     desc: "築年（西暦）・構造（RC/SRC/S/W）・建物階数・居住階を入力すると、その場で在宅避難に適しているかの診断コメントが表示されます。入力を変えると結果も即座に更新されます。",
     img: step3,
@@ -56,7 +60,8 @@ const STEPS = [
     href: "/karte",
   },
   {
-    num: "STEP 4",
+    tag: "防災カルテ",
+    icon: "📦",
     title: "備蓄量から継続可能日数をシミュレート",
     desc: "世帯人数と飲料水（L）・食料（食）・簡易トイレ（回分）の備蓄量を入力すると、在宅避難を続けられる日数とボトルネックの物資がわかります。目標の7日に届くよう備蓄を見直しましょう。",
     img: step4,
@@ -64,7 +69,8 @@ const STEPS = [
     href: "/karte",
   },
   {
-    num: "STEP 5",
+    tag: "目安箱",
+    icon: "📮",
     title: "目安箱に不足物資・余剰備蓄を投稿",
     desc: "目安箱の「投稿する」タブで、避難所（不足物資）かマンション住民（余剰備蓄）かを選び、物資カテゴリ・数量・区を指定して投稿します。避難所名や補足は任意です。",
     img: step5,
@@ -72,7 +78,8 @@ const STEPS = [
     href: "/board",
   },
   {
-    num: "STEP 6",
+    tag: "目安箱",
+    icon: "🤝",
     title: "マッチング状況を確認",
     desc: "「マッチング状況」タブで、区×物資ごとに不足数と提供可能数が集計され、「✅ 充足可能」「🤝 一部マッチ」「🔍 提供者募集中」のステータスで表示されます。10秒ごとに自動更新されるので、発災時も最新の需給が把握できます。",
     img: step6,
@@ -135,17 +142,17 @@ export default function LandingPage() {
 
       {/* 操作手順 */}
       <section>
-        <h2 className="font-display text-2xl text-center">つかいかた</h2>
+        <h2 className="font-display text-2xl text-center">画面でみる機能</h2>
         <p className="mt-2 text-center font-mono text-xs text-(--color-ink-soft)">
-          実際の画面で操作の流れを紹介します（STEP 1〜4: 防災カルテ / STEP 5〜6: 目安箱）
+          実際の画面で紹介します。どれから使ってもかまいません
         </p>
         <div className="mt-7 space-y-9">
-          {STEPS.map((s) => (
-            <div key={s.num} className="chart-sheet p-5 sm:p-6">
-              <div className="chart-tab">{s.num}</div>
+          {GUIDES.map((s) => (
+            <div key={s.title} className="chart-sheet p-5 sm:p-6">
+              <div className="chart-tab">{s.tag}</div>
               <div className="flex items-center gap-3 pt-1">
-                <span className="hanko shrink-0 w-9 h-9 flex items-center justify-center font-mono text-xs text-(--color-hanko)">
-                  {s.num.replace("STEP ", "")}
+                <span className="hanko shrink-0 w-9 h-9 flex items-center justify-center text-base">
+                  {s.icon}
                 </span>
                 <h3 className="font-display text-lg">{s.title}</h3>
               </div>
