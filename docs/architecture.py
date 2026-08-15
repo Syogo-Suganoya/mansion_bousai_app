@@ -68,7 +68,7 @@ with Diagram(
         graph_attr=cluster_attr,
     ):
         api_kiken = Storage("地域危険度測定調査\n(第9回・都市整備局)")
-        api_shinsui = Storage("浸水予想区域図\n(建設局・10流域)")
+        api_shinsui = Storage("浸水予想区域図\n(下水道局・10流域)")
         api_shobo = Storage("消火栓・防火水槽等\n(東京消防庁)")
         api_hinan = Storage("避難所一覧\n(総務局 CC BY 4.0)")
 
