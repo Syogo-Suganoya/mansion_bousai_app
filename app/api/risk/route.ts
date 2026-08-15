@@ -82,7 +82,7 @@ export async function GET(req: NextRequest) {
     }
 
     // 3. 東京都オープンデータAPIへ並列照会
-    //    地域危険度（都市整備局）/ 浸水予想区域図（建設局）/
+    //    地域危険度（都市整備局）/ 浸水予想区域図（下水道局）/
     //    消火栓・防火水槽等（東京消防庁）/ 避難所一覧（総務局）
     const [riskRes, floodRes, waterRes, shelterRes] = await Promise.allSettled([
       fetchRiskFromApi(ward, townName),

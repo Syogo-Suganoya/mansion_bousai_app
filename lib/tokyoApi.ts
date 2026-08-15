@@ -20,7 +20,7 @@ const CISTERN_APIS = [
 // 東京都防災マップ 避難所一覧データ / 東京都総務局（CC BY 4.0）
 const SHELTER_API = "t000003d0000000093-0af9bfa497bc7be6ef83e5bfd1fdcfc6-0";
 
-// 浸水予想区域図（改定）浸水深・地盤高 / 東京都建設局（区部を覆う主要流域）
+// 浸水予想区域図（改定）浸水深・地盤高 / 東京都下水道局（区部を覆う主要流域）
 const FLOOD_APIS: { id: string; basin: string }[] = [
   { id: "t000020d0000000043-7cb9317c6809f01334fe5e6db902a911-0", basin: "江東内部河川" },
   { id: "t000020d0000000043-e5795bd14b180883b9c846ace45a1682-0", basin: "中川・綾瀬川(1)" },

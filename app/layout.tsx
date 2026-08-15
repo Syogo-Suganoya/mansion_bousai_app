@@ -37,7 +37,7 @@ export default function RootLayout({
           {children}
         </main>
         <footer className="border-t border-(--color-paper-deep) text-center font-mono text-[0.65rem] text-(--color-ink-soft) py-4 px-4">
-          データ出典: 東京都オープンデータAPI（都市整備局「地域危険度測定調査」/ 建設局「浸水予想区域図」/
+          データ出典: 東京都オープンデータAPI（都市整備局「地域危険度測定調査」/ 下水道局「浸水予想区域図」/
           東京消防庁「消火栓・防火水槽等」/ 総務局「東京都防災マップ 避難所一覧」）/ 国土地理院API
         </footer>
       </body>
